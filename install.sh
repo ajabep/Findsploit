@@ -19,18 +19,22 @@ echo -e "$COLOR1+ -- --=[https://crowdshield.com$RESET"
 echo -e "$RESET"
 echo -e "$COLOR2+ -- --=[This script will install findsploit under $FINDSPLOIT_INSTALL_DIR."
 
-rm -Rf $FINDSPLOIT_INSTALL_DIR 2> /dev/null
-mkdir -p $FINDSPLOIT_INSTALL_DIR 2> /dev/null
+rm -Rf $FINDSPLOIT_INSTALL_DIR
+mkdir -p $FINDSPLOIT_INSTALL_DIR
 cp -Rf $PWD/* $FINDSPLOIT_INSTALL_DIR 
 cd $FINDSPLOIT_INSTALL_DIR
-apt-get install exploitdb xdg-utils
-mkdir loot 2> /dev/null
+mkdir loot
+
+apt-get install metasploit-framework exploitdb xdg-utils
+
 chmod +x $FINDSPLOIT_INSTALL_DIR/findsploit
 chmod +x $FINDSPLOIT_INSTALL_DIR/copysploit
 chmod +x $FINDSPLOIT_INSTALL_DIR/compilesploit
+
 rm -f /usr/bin/findsploit 2> /dev/null
 rm -f /usr/bin/copysploit 2> /dev/null
 rm -f /usr/bin/compilesploit 2> /dev/null
+
 ln -s /usr/share/findsploit/findsploit /usr/bin/findsploit
 ln -s /usr/share/findsploit/copysploit /usr/bin/copysploit
 ln -s /usr/share/findsploit/compilesploit /usr/bin/compilesploit
