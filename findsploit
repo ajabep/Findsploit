@@ -26,7 +26,7 @@ function logo {
 	echo -e "$COLOR3                        |_|                  "
 	echo ""
 	echo -e "$COLOR1+ -- --=[findsploit v$VER by 1N3"
-    echo -e "$COLOR1+ -- --=[https://crowdshield.com$RESET"
+	echo -e "$COLOR1+ -- --=[https://crowdshield.com$RESET"
 	echo ""
 }
 
@@ -55,9 +55,9 @@ function update {
 			./install.sh
 			cd ..
 			rm -r Findsploit
-  		else
-     		exit 1
-  		fi
+		else
+			exit 1
+		fi
 	else
   		echo -e "$COLOR1+ -- --=[Findsploit is already the latest version $RESET"
   		echo ""
