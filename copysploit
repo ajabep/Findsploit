@@ -1,7 +1,5 @@
 #!/bin/bash
-# copysploit by 1N3
 # A small script to automatically find and copy an exploit file to the current directory...
-#
 
 EDITOR='gedit' # PREFERED TEXT EDITOR
 COLOR1='\033[1m\033[91m'

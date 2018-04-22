@@ -1,7 +1,5 @@
 #!/bin/bash
-# Install script for Findsploit by 1N3@CrowdShield
-# https://crowdshield.com 
-#
+# Install script
 
 FINDSPLOIT_INSTALL_DIR=/usr/share/findsploit
 COLOR1='\033[91m'

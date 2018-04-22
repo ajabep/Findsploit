@@ -1,7 +1,5 @@
 #!/bin/bash
-# compilesploit by 1N3
 # A small script to automatically find and copy an exploit file to the current directory...
-#
 
 COLOR1='\033[1m\033[91m'
 COLOR2='\033[1m\033[92m'

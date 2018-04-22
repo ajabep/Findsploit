@@ -1,9 +1,5 @@
 #!/bin/bash
-# Findsploit by 1N3 @CrowdShield
-# https://crowdshield.com
-#
 # Finsploit is a simple bash script to quickly and easily search both local and online exploit databases.
-#
 
 clear
 
