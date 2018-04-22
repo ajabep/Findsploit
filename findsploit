@@ -2,9 +2,9 @@
 # Finsploit is a simple bash script to quickly and easily search both local and online exploit databases.
 
 VER='1.8'
-SEARCHSPLOIT_SCRIPT='/usr/bin/searchsploit' 
-NMAP_SCRIPTS='/usr/share/findsploit/nmap/nmap'
-MSF_SEARCH_DIR='/usr/share/findsploit/msf_search'
+SEARCHSPLOIT_SCRIPT='/usr/bin/searchsploit'
+NMAP_SCRIPTS='/usr/share/nmap/scripts'
+MSF_MODULE_DIR='/opt/metasploit-framework/embedded/framework/modules'
 BROWSER_CMD='xdg-open'
 REPO_FULLNAME='ajabep/Findsploit'
 VAR1=$1;
@@ -83,25 +83,11 @@ if [[ "$1" == "--update" || "$1" == "-u" ]];
 then
 	update
 	exit
-elif [[ "$1" == "auxiliary" ]];
+elif [[ "$1" == "auxiliary" || "$1" == "encoders" || "$1" == "exploits" || "$1" == "payloads" ]];
 then
 	logo
-	cat $MSF_SEARCH_DIR/auxiliary
-	exit
-elif [[ "$1" == "encoders" ]];
-then
-	logo
-	cat $MSF_SEARCH_DIR/encoders
-	exit
-elif [[ "$1" == "exploits" ]];
-then
-	logo
-	cat $MSF_SEARCH_DIR/exploits
-	exit
-elif [[ "$1" == "payloads" ]];
-then
-	logo
-	cat $MSF_SEARCH_DIR/payloads
+	cd $MSF_MODULE_DIR/$1
+	find -type f | sed "s/^\./$1/;s/\.rb$//" # TODO Display all informations
 	exit
 else
 	logo
@@ -109,18 +95,27 @@ else
 	echo ""
 	echo -e "$COLOR1+ -- --=[NMAP SCRIPTS$RESET"
 	echo ""
-	egrep -i "$VAR1" $NMAP_SCRIPTS | egrep -i "$VAR2" --color=auto | egrep -i "$VAR3" --color=auto
+	find $NMAP_SCRIPTS -type f | grep -Ei --color=always "$VAR1" | grep -Ei "$VAR2" --color=always | grep -Ei "$VAR3" --color=always
+	echo ""
 	echo ""
 	echo -e "$COLOR1+ -- --=[METASPLOIT EXPLOITS$RESET"
 	echo ""
-	egrep -i "$VAR1" $MSF_SEARCH_DIR/* | egrep -i "$VAR2" --color=auto | egrep -i "$VAR3" --color=auto
+	cd $MSF_MODULE_DIR
+	find -type f  \
+		| sed "s/^\.\///;s/\.rb$//" \
+		| grep -Ei "$VAR1" --color=always \
+		| grep -Ei "$VAR2" --color=always \
+		| grep -Ei "$VAR3" --color=always \
+		# TODO Display all informations
+	echo ""
 	echo ""
 	echo -e "$COLOR1+ -- --=[EXPLOITDB EXPLOITS$RESET"
 	echo ""
 	$SEARCHSPLOIT_SCRIPT $VARS
 	echo ""
+	echo ""
 	echo -e "$COLOR2+ -- --=[Press any key to search online or Ctrl+C to exit...$RESET"
-	read test
+	read -n 1 test
 	$BROWSER_CMD 'https://www.google.ca/search?q='$VAR1'%20'$VAR2'%20'$VAR3'+exploit' 2>/dev/null &> /dev/null
 	sleep 5
 	$BROWSER_CMD 'https://www.google.ca/search?q='$VAR1'%20'$VAR2'%20'$VAR3'+exploit+site:www.securityfocus.com' 2> /dev/null &> /dev/null
