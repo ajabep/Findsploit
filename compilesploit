@@ -4,6 +4,7 @@
 COLOR1='\033[1m\033[91m'
 COLOR2='\033[1m\033[92m'
 COLOR3='\033[1m'
+RESET='\033[0m'
 
 function logo {
 	echo -e "$COLOR3   ___ _           _           _       _ _   "
@@ -25,7 +26,6 @@ then
 	echo ""
 	exit;
 else
-	DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 	logo
 	echo ""
 	echo -e "$COLOR1+ -- --=[compilesploit by 1N3"

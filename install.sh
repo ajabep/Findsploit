@@ -5,7 +5,7 @@ FINDSPLOIT_INSTALL_DIR=/usr/share/findsploit
 COLOR1='\033[91m'
 COLOR2='\033[92m'
 COLOR3='\033[92m'
-RESET='\e[0m'
+RESET='\033[0m'
 
 echo -e "$COLOR3   ___ _           _           _       _ _   "
 echo -e "$COLOR3  / __(_)_ __   __| |___ _ __ | | ___ (_) |_ "
@@ -17,8 +17,8 @@ echo -e "$RESET"
 echo -e "$COLOR1+ -- --=[findsploit by 1N3"
 echo -e "$COLOR1+ -- --=[https://crowdshield.com$RESET"
 echo -e "$RESET"
+echo -e "$COLOR2+ -- --=[This script will install findsploit under $FINDSPLOIT_INSTALL_DIR."
 
-echo -e "$OKGREEN + -- --=[This script will install findsploit under $FINDSPLOIT_INSTALL_DIR."
 rm -Rf $FINDSPLOIT_INSTALL_DIR 2> /dev/null
 mkdir -p $FINDSPLOIT_INSTALL_DIR 2> /dev/null
 cp -Rf $PWD/* $FINDSPLOIT_INSTALL_DIR 
@@ -34,6 +34,5 @@ rm -f /usr/bin/compilesploit 2> /dev/null
 ln -s /usr/share/findsploit/findsploit /usr/bin/findsploit
 ln -s /usr/share/findsploit/copysploit /usr/bin/copysploit
 ln -s /usr/share/findsploit/compilesploit /usr/bin/compilesploit
-echo -e "$OKORANGE + -- --=[Done!$RESET"
 
-
+echo -e "$COLOR2+ -- --=[Done!$RESET"
