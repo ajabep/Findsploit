@@ -3,7 +3,7 @@
 ![alt tag](https://github.com/1N3/Findsploit/blob/master/findsploit.png)
 
 
-## About
+## About this tool
 
 Finsploit is a simple bash script to quickly and easily search both local and
 online exploit databases. This repository also includes "copysploit" to copy any
@@ -12,6 +12,14 @@ compile and run any C exploit (ie. ./copysploit 1337.c && ./compilesploit
 1337.c).
 
 For updates to this script, type `findsploit --update`
+
+
+## About this fork
+
+The goal of this fork is to make FindSploit really usable in a real world. It
+clean the code, it delete noises and based it's search on installed tools. So,
+now, when you update this tool, you only get new features, new exploits is
+updated with your tools :)
 
 
 ## Installation
