@@ -16,7 +16,6 @@ echo -e "$COLOR3                        |_|                  "
 echo -e "$RESET"
 echo -e "$COLOR1+ -- --=[findsploit by 1N3"
 echo -e "$COLOR1+ -- --=[https://crowdshield.com$RESET"
-echo -e "$COLOR1+ -- --=[Usage: findsploit windows xp remote, etc."
 echo -e "$RESET"
 
 echo -e "$OKGREEN + -- --=[This script will install findsploit under $FINDSPLOIT_INSTALL_DIR."
