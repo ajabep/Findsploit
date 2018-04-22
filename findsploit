@@ -122,7 +122,6 @@ else
 	read test
 	$BROWSER_CMD 'https://crowdshield.com' 2> /dev/null &
 	sleep 5
-	$BROWSER_CMD 'https://www.exploit-db.com/search/?action=search&description='$VAR1'+'$VAR2'+'$VAR3'&e_author=' 2>/dev/null &> /dev/null
 	$BROWSER_CMD 'https://www.google.ca/search?q='$VAR1'%20'$VAR2'%20'$VAR3'+exploit' 2>/dev/null &> /dev/null
 	$BROWSER_CMD 'https://www.google.ca/search?q='$VAR1'%20'$VAR2'%20'$VAR3'+exploit+site:www.securityfocus.com' 2> /dev/null &> /dev/null
 	$BROWSER_CMD 'https://www.google.ca/search?q='$VAR1'%20'$VAR2'%20'$VAR3'+site:0day.today' 2> /dev/null &> /dev/null
