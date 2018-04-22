@@ -1,6 +1,8 @@
 #!/bin/bash
 # A small script to automatically find and copy an exploit file to the current directory...
 
+SEARCHSPLOIT_EXPLOITS_DIR='/usr/share/exploitdb/'
+"${FINDSPLOIT_USER_EXPLOIT_DIRS:=}"  # Set an empty string to this env var if unsed or empty
 COLOR1='\033[1m\033[91m'
 COLOR2='\033[1m\033[92m'
 COLOR3='\033[1m'
@@ -19,6 +21,12 @@ function logo {
 	echo ""
 }
 
+function exit_fail() {
+	echo -e "$COLOR1+ -- --=[Error: $1 $RESET"
+	echo ""
+	exit 1
+}
+
 if [ -z "$1" ]; 
 then
 	logo
@@ -26,11 +34,13 @@ then
 	exit;
 else
 	logo
-	echo -e "$COLOR1+ -- --=[COPYING:$COLOR2 $1 $COLOR1 TO $COLOR2 `pwd` $RESET"
+	echo -e "$COLOR1+ -- --=[COPYING: $COLOR2 $1 $COLOR1 TO $COLOR2 `pwd` $RESET"
+	echo -e "$COLOR1+ -- --=[Search $COLOR2 $1 $COLOR1 into $COLOR2 $SEARCHSPLOIT_EXPLOITS_DIR $FINDSPLOIT_USER_EXPLOIT_DIRS $RESET"
+	echo -e "$COLOR1+ -- --=[You can put path of your exploitation kits into \$FINDSPLOIT_USER_EXPLOIT_DIRS environment variable"
 	echo ""
-	find /pentest/exploits/ -name $1 -exec cp -f {} . \;
+	find $SEARCHSPLOIT_EXPLOITS_DIR $FINDSPLOIT_USER_EXPLOIT_DIRS -name $1 -exec cp -f '{}' . ';'
 	echo -e "$COLOR1"
-	ls -lahtr $1
+	ls -lahtr $1 2>/dev/null || exit_fail "Exploit $1 not found"
 fi
 exit
 
