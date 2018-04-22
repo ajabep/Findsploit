@@ -67,7 +67,7 @@ function update {
 if [ -z "$1" ];
 then
 	logo
-	echo -e "$COLOR1+ -- --=[Usage: findsploit windows xp remote, etc."
+	echo -e "$COLOR1+ -- --=[Usages: findsploit windows xp remote, etc.$RESET"
 	echo ""
 	echo ""
 	exit;
