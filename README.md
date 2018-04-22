@@ -58,13 +58,3 @@ Search all Metasploit payloads for windows only payloads:
 This software is free to distribute, modify and use with the condition that
 credit is provided to the creator (1N3@CrowdShield) and is not for commercial
 use.
-
-
-## DONATIONS
-
-Donations are welcome. This will help fascilitate improved features, frequent
-updates and better overall support.
- * *BTC* `1Fav36btfmdrYpCAR65XjKHhxuJJwFyKum`
- * *DASH* `XoWYdMDGb7UZmzuLviQYtUGb5MNXSkqvXG`
- * *ETH* `0x20bB09273702eaBDFbEE9809473Fd04b969a794d`
- * *LTC* `LQ6mPewec3xeLBYMdRP4yzeta6b9urqs2f`
