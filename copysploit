@@ -2,7 +2,7 @@
 # A small script to automatically find and copy an exploit file to the current directory...
 
 SEARCHSPLOIT_EXPLOITS_DIR='/usr/share/exploitdb/'
-"${FINDSPLOIT_USER_EXPLOIT_DIRS:=}"  # Set an empty string to this env var if unsed or empty
+FINDSPLOIT_USER_EXPLOIT_DIRS="${FINDSPLOIT_USER_EXPLOIT_DIRS:-}"  # Set an empty string to this env var if unsed or empty
 COLOR1='\033[1m\033[91m'
 COLOR2='\033[1m\033[92m'
 COLOR3='\033[1m'
