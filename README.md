@@ -3,7 +3,7 @@
 ![alt tag](https://github.com/1N3/Findsploit/blob/master/findsploit.png)
 
 
-## ABOUT
+## About
 
 Finsploit is a simple bash script to quickly and easily search both local and
 online exploit databases. This repository also includes "copysploit" to copy any
@@ -14,14 +14,14 @@ compile and run any C exploit (ie. ./copysploit 1337.c && ./compilesploit
 For updates to this script, type `findsploit --update`
 
 
-## INSTALLATION
+## Installation
 
 ```sh
 ./install.sh
 ```
 
 
-## USAGE
+## Usage
 
 ```
 Search for all exploits and modules using a single search term:
@@ -53,7 +53,7 @@ Search all Metasploit payloads for windows only payloads:
 ```
 
 
-## LICENSE
+## License
 
 This software is free to distribute, modify and use with the condition that
 credit is provided to the creator (1N3@CrowdShield) and is not for commercial
