@@ -6,6 +6,7 @@ SEARCHSPLOIT_SCRIPT='/usr/bin/searchsploit'
 NMAP_SCRIPTS='/usr/share/findsploit/nmap/nmap'
 MSF_SEARCH_DIR='/usr/share/findsploit/msf_search'
 BROWSER_CMD='xdg-open'
+REPO_FULLNAME='ajabep/Findsploit'
 VAR1=$1;
 VAR2=$2;
 VAR3=$3;
@@ -28,27 +29,33 @@ function logo {
 	echo ""
 }
 
+function exit_fail() {
+	echo -e "$COLOR1+ -- --=[Error: $1 $RESET"
+	echo ""
+	exit 1
+}
+
 function update {
 	logo
+
 	echo -e "$COLOR1+ -- --=[Checking for updates... $RESET"
-	if [[ $(curl -s https://api.github.com/repos/1N3/Findsploit/tags) == "" ]];
+	if [[ $(curl -s https://api.github.com/repos/$REPO_FULLNAME/tags) == "" ]];
 	then
-    	echo -e "$COLOR1+ -- --=[Error: no active internet connection $RESET"
-    	echo ""
-    	exit 1
-  	fi
-  	LATEST_VERSION=$(curl -s https://api.github.com/repos/1N3/Findsploit/tags | grep -Po '"name":.*?[^\\]",'| head -1 | cut -c11-13)
-  	if [[ "$LATEST_VERSION" != "$VER" && "$LATEST_VERSION" != "" ]];
-  	then
-   		echo -e "$COLOR1+ -- --=[Findsploit v$LATEST_VERSION is available to download. $RESET"
-   		echo -e "$COLOR1+ -- --=[Do you want to update Findsploit [Y/n]: $RESET"
-    	read answer
-  		if [[ "$answer" == "Y" || "$answer" == "y" ]] ;
-  		then
-  			cd  ~ || { echo -e "$COLOR1+ -- --=[Update Failed $RESET" ; exit 1 ; }
+		exit_fail "Error: no active internet connection"
+	fi
+
+	LATEST_VERSION=$(curl -s https://api.github.com/repos/$REPO_FULLNAME/tags | grep -Po '"name":.*?[^\\]",'| head -1 | cut -c11-13)
+	if [[ "$LATEST_VERSION" != "$VER" && "$LATEST_VERSION" != "" ]];
+	then
+		echo -e "$COLOR1+ -- --=[Findsploit v$LATEST_VERSION is available to download. $RESET"
+		echo -e "$COLOR1+ -- --=[Do you want to update Findsploit [y/N]: $RESET"
+		read answer
+		if [[ "$answer" == "Y" || "$answer" == "y" ]] ;
+		then
+			cd  /tmp || exit_fail "Update Failed"
 			rm -r Findsploit  2> /dev/null
-			git clone https://github.com/1N3/Findsploit || { echo -e "$COLOR1+ -- --=[Couldn't download latest version $RESET" ; exit 1; }
-			cd Findsploit ||  { echo -e "$COLOR1+ -- --=[Update Failed $RESET" ; exit 1 ;}
+			git clone https://github.com/$REPO_FULLNAME || exit_fail "Couldn't download latest version"
+			cd Findsploit ||  exit_fail "Git clone fails"
 			git checkout $LATEST_VERSION 2> /dev/null
 			./install.sh
 			cd ..
@@ -57,8 +64,8 @@ function update {
 			exit 1
 		fi
 	else
-  		echo -e "$COLOR1+ -- --=[Findsploit is already the latest version $RESET"
-  		echo ""
+		echo -e "$COLOR1+ -- --=[Findsploit is already the latest version $RESET"
+		echo ""
 	fi
 }
 
