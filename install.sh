@@ -1,6 +1,8 @@
 #!/bin/bash
 # Install script
 
+set -e
+
 FINDSPLOIT_INSTALL_DIR=/usr/share/findsploit
 COLOR1='\033[91m'
 COLOR2='\033[92m'
@@ -17,7 +19,7 @@ echo -e "$RESET"
 echo -e "$COLOR1+ -- --=[findsploit by 1N3"
 echo -e "$COLOR1+ -- --=[https://crowdshield.com$RESET"
 echo -e "$RESET"
-echo -e "$COLOR2+ -- --=[This script will install findsploit under $FINDSPLOIT_INSTALL_DIR."
+echo -e "$COLOR2+ -- --=[This script will install findsploit under $FINDSPLOIT_INSTALL_DIR.$RESET"
 
 rm -Rf $FINDSPLOIT_INSTALL_DIR
 mkdir -p $FINDSPLOIT_INSTALL_DIR
