@@ -27,7 +27,7 @@ cp -Rf $PWD/* $FINDSPLOIT_INSTALL_DIR
 cd $FINDSPLOIT_INSTALL_DIR
 mkdir loot
 
-apt-get install metasploit-framework exploitdb xdg-utils
+apt-get install -y metasploit-framework exploitdb xdg-utils
 
 chmod +x $FINDSPLOIT_INSTALL_DIR/findsploit
 chmod +x $FINDSPLOIT_INSTALL_DIR/copysploit
